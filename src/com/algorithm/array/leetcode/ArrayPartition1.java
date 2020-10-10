@@ -20,5 +20,4 @@ public class ArrayPartition1 {
         }
         return sum;
     }
-
 }
