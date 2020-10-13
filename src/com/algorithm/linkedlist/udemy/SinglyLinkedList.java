@@ -87,6 +87,22 @@ public class SinglyLinkedList {
         return previous;
     }
 
+    public ListNode getMiddleNode(ListNode head){
+
+        if (head==null){
+            return null;
+        }
+
+        ListNode fastPointer = head;
+        ListNode slowPointer = head;
+
+        while (fastPointer!=null && fastPointer.next!=null){
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+        }
+        return slowPointer;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
 //        singlyLinkedList.head = new ListNode(10);
