@@ -17,4 +17,13 @@ public class ListNode {
         this.next = next;
     }
 
+    public static void display(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " -> ");
+            current = current.next;
+        }
+        System.out.print("null");
+    }
+
 }
