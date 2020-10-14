@@ -162,14 +162,40 @@ public class SinglyLinkedList {
     public void removeGivenKey(int value) {
         ListNode current = head;
         ListNode prev = null;
-        while (current!=null && current.next!=null){
-            if (current.data!=value){
+        while (current != null && current.next != null) {
+            if (current.data != value) {
                 prev = current;
                 current = current.next;
-            }else {
+            } else {
                 prev.next = current.next;
             }
         }
+    }
+
+    public void removeGivenKey2(int value) {
+        ListNode current = head;
+        ListNode temp = null;
+        while (current != null && current.data != value) {
+            temp = current.next;
+            current = current.next;
+        }
+        if (current == null) return;
+
+        temp.next = current.next;
+    }
+
+    public boolean containsLoop() {
+        ListNode fastPnt = head;
+        ListNode slowPnt = head;
+
+        while (fastPnt != null && fastPnt.next != null) {
+            fastPnt = fastPnt.next.next;
+            slowPnt = slowPnt.next;
+            if (fastPnt == slowPnt) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
