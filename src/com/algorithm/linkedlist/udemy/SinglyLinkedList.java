@@ -87,21 +87,91 @@ public class SinglyLinkedList {
         return previous;
     }
 
-    public ListNode getMiddleNode(ListNode head){
+    public ListNode getMiddleNode(ListNode head) {
 
-        if (head==null){
+        if (head == null) {
             return null;
         }
 
         ListNode fastPointer = head;
         ListNode slowPointer = head;
 
-        while (fastPointer!=null && fastPointer.next!=null){
+        while (fastPointer != null && fastPointer.next != null) {
             slowPointer = slowPointer.next;
             fastPointer = fastPointer.next.next;
         }
         return slowPointer;
     }
+
+    public ListNode getNthMethodFromEnd(int n) {
+
+        if (head == null) {
+            return null;
+        }
+
+        if (n <= 0) {
+            throw new IllegalArgumentException("Invalid value: " + n);
+        }
+
+        ListNode mainPoint = head;
+        ListNode referencePoint = head;
+        int count = 0;
+        while (count < n) {
+            referencePoint = referencePoint.next;
+            count++;
+        }
+
+        while (referencePoint != null) {
+            referencePoint = referencePoint.next;
+            mainPoint = mainPoint.next;
+        }
+        return mainPoint;
+    }
+
+    public void removeDuplicate() {
+        ListNode current = head;
+        while (current != null && current.next != null) {
+            if (current.data == current.next.data) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+    }
+
+    public ListNode insertNewNode(int value) {
+
+        ListNode newNode = new ListNode(value);
+
+        if (head == null) {
+            return null;
+        }
+
+        ListNode current = head;
+        ListNode temp = null;
+
+        while (current != null && current.data < newNode.data) {
+            temp = current;
+            current = current.next;
+        }
+        newNode.next = current;
+        temp.next = newNode;
+        return head;
+    }
+
+    public void removeGivenKey(int value) {
+        ListNode current = head;
+        ListNode prev = null;
+        while (current!=null && current.next!=null){
+            if (current.data!=value){
+                prev = current;
+                current = current.next;
+            }else {
+                prev.next = current.next;
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
@@ -120,6 +190,6 @@ public class SinglyLinkedList {
         singlyLinkedList.insertLast(1);
         singlyLinkedList.insertLast(23);
         singlyLinkedList.display();
-        System.out.print(singlyLinkedList.length());
+        System.out.print(singlyLinkedList.getNthMethodFromEnd(2));
     }
 }
