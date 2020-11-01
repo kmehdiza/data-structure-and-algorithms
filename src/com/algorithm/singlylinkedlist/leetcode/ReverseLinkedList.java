@@ -1,11 +1,6 @@
-package com.algorithm.linkedlist.leetcode;
+package com.algorithm.singlylinkedlist.leetcode;
 
 public class ReverseLinkedList {
-
-
-    public static void main(String[] args) {
-
-    }
 
     public static ListNode reverseList(ListNode head) {
         ListNode current = head;

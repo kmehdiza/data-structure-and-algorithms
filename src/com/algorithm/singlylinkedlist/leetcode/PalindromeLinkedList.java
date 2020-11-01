@@ -1,4 +1,4 @@
-package com.algorithm.linkedlist.leetcode;
+package com.algorithm.singlylinkedlist.leetcode;
 
 import java.util.Stack;
 

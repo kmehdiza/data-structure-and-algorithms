@@ -1,4 +1,4 @@
-package com.algorithm.linkedlist.udemy;
+package com.algorithm.singlylinkedlist.udemy;
 
 public class SinglyLinkedList {
 

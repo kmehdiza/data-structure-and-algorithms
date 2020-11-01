@@ -1,6 +1,4 @@
-package com.algorithm.linkedlist.leetcode;
-
-import java.util.List;
+package com.algorithm.singlylinkedlist.leetcode;
 
 public class RemoveLinkedListElements {
 
