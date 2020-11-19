@@ -1,5 +1,7 @@
 package com.algorithm.stack.udemy;
 
+import java.util.NoSuchElementException;
+
 public class MyQueue {
 
     private ListNode head;
@@ -22,9 +24,9 @@ public class MyQueue {
 
     public void enQueue(int data) {
         ListNode newNode = new ListNode(data);
-        if (isEmpty()){
+        if (isEmpty()) {
             head = newNode;
-        }else{
+        } else {
             tail.next = newNode;
         }
         tail = newNode;
@@ -32,16 +34,43 @@ public class MyQueue {
     }
 
     public int deQueue() {
+        if (isEmpty())
+            throw new NoSuchElementException();
         int temp = head.data;
         head = head.next;
+        if (head == null) tail = null;
+        length--;
         return temp;
     }
 
-    public int peek(){
+    public int peek() {
         return head.data;
     }
 
-    public boolean isEmpty(){
-        return length==0;
+    public boolean isEmpty() {
+        return length == 0;
+    }
+
+    public int first() {
+        if (isEmpty()) throw new NoSuchElementException();
+        return head.data;
+    }
+
+    public int last() {
+        if (isEmpty()) throw new NoSuchElementException();
+        return tail.data;
+    }
+
+    public void print() {
+        if (isEmpty()) {
+            return;
+        }
+        ListNode current = head;
+        while (current != null) {
+            System.out.println(current.data + " --> ");
+            current = current.next;
+        }
+        System.out.println("null");
+
     }
 }

@@ -1,8 +1,12 @@
 package com.algorithm.singlylinkedlist.udemy;
 
+import java.util.HashMap;
+
 public class SinglyLinkedList {
 
     private ListNode head;
+
+    HashMap<Integer,Integer> map = new HashMap<>();
 
     private static class ListNode {
 
