@@ -7,7 +7,9 @@ public class TwoDimensionArray {
     public static void main(String[] args) {
         TwoDimensionArray twoDimensionArray = new TwoDimensionArray(1, 5);
         twoDimensionArray.traverseArray();
-        twoDimensionArray.insertValueInTheArray(0,6,21);
+        twoDimensionArray.insertValueInTheArray(0, 6, 21);
+        twoDimensionArray.traverseArray();
+        twoDimensionArray.deleteAllArray();
         twoDimensionArray.traverseArray();
     }
 
@@ -23,11 +25,15 @@ public class TwoDimensionArray {
     }
 
     public void traverseArray() {
-        for (int row = 0; row < arr.length; row++) {
-            for (int col = 0; col < arr[row].length; col++) {
-                System.out.print(arr[row][col] + " ");
+        try {
+            for (int row = 0; row < arr.length; row++) {
+                for (int col = 0; col < arr[row].length; col++) {
+                    System.out.print(arr[row][col] + " ");
+                }
+                System.out.println();
             }
-            System.out.println();
+        } catch (NullPointerException ex) {
+            System.out.println("Array already deleted");
         }
     }
 
@@ -41,5 +47,17 @@ public class TwoDimensionArray {
         } catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println("Invalid index to access array");
         }
+    }
+
+    public void deleteValueFromArray(int row, int col) {
+        try {
+            arr[row][col] = Integer.MIN_VALUE;
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println("Invalid index number");
+        }
+    }
+
+    public void deleteAllArray() {
+        arr = null;
     }
 }
